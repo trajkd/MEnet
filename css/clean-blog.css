@@ -45,6 +45,20 @@ blockquote {
   color: #868e96;
 }
 
+@media only screen and (max-width: 768px) {
+
+  button.navbar-toggler {
+    display: inline-block;
+    float: left;
+    width: 100vw;
+  }
+
+  span.tagline {
+    display: inline-block;
+    float: right;
+  }
+}
+
 .section-heading {
   font-size: 36px;
   font-weight: 700;
@@ -102,6 +116,7 @@ img::-moz-selection {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
+  text-align: center;
   text-transform: uppercase;
 }
 
