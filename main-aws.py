@@ -278,7 +278,7 @@ class NewPostHandler(webapp2.RequestHandler):
                                     }
                                 )
                                 all_posts(True)
-                                single_post(self.request.get('title'), True)
+                                single_post(parse.quote_plus(str(self.request.get('title')).lower()), True)
                                 self.redirect('/')
                         else:
                                 self.redirect('/')
