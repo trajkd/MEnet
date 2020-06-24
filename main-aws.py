@@ -482,6 +482,7 @@ class StaticFileHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
         ('/', MainPage),
         (r'/posts/(.+)', PermalinkHandler),
+        (r'/(.+)/edit', EditBookHandler),
         ('/new', NewPostHandler),
         ('/login', LoginHandler),
         ('/logout', LogoutHandler),
