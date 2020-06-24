@@ -214,14 +214,15 @@ header.masthead .overlay {
   left: 0;
   height: 100%;
   width: 65vw;
-  background-color: #fff;
-  opacity: 0;
+  background-color: #ffffff00;
+  opacity: 0.8;
   visibility: visible;
 }
 
 @media only screen and (max-width: 768px) {
   header.masthead .overlay {
     width: 100vw;
+    background-color: #fff;
   }
 }
 
