@@ -206,6 +206,7 @@ def single_post(post_id, update=False, delete=False):
         #       book = memcache.get(key)
         #       if book is None or update:
         #               #book = Book.get_by_id(long(book_id))
+        table = get_post_table()
         try:
             response = table.get_item(Key={'title': post_id})
         except ClientError as e:
