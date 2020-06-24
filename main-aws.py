@@ -450,7 +450,7 @@ class LoginHandler(Handler):
                 password = self.request.get("password")
                 #u = db.Query(User).filter("username =", username).fetch(limit=1)
                 u = query_authors(username)
-                if not len(u)==0 and valid_pw(username, password, u[0].password):
+                if not len(u)==0 and valid_pw(username, password, u[0]['password']):
                         #self.response.headers.add_header("Set-Cookie", "userid=%s; Path=/"%(str(u[0].key().id())+"|"+str(u[0].password)))
                         self.response.headers.add_header("Set-Cookie", "userid=%s; Path=/"%(str(u[0]['username'])+"|"+str(u[0]['password'])))
                         self.redirect("/new")
