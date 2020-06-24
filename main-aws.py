@@ -437,7 +437,7 @@ class Handler(webapp2.RequestHandler):
 
 class PermalinkHandler(Handler):
         def get(self, post_id):
-                p = single_post(parse.unquote_plus(post_id))
+                p = single_post(post_id)
                 if not p:
                         self.error(404)
                         return
