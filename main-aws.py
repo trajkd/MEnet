@@ -1,3 +1,5 @@
+from __future__ import urllib
+
 import os
 
 import webapp2
@@ -9,8 +11,6 @@ os.environ['AWS_PROFILE'] = "Default"
 os.environ['AWS_DEFAULT_REGION'] = "us-west-2"
 
 from datetime import date
-
-from __future__ import urllib
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
