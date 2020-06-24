@@ -1,4 +1,4 @@
-from __future__ import urllib
+from __future__ import urllib.parse
 
 import os
 
