@@ -239,7 +239,7 @@ class NewPostHandler(webapp2.RequestHandler):
                         #u = User.get_by_id(long(userid))
                         u = query_authors(userid)
                         #if u != None and u.password.split(",")[0]==password_hash:
-                        if u != None and u['password'].split(",")[0]==password_hash:
+                        if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 self.response.out.write(jinja_env.get_template('newpost.html').render(error="", title="", subtitle="", author="", content="", cover=""))
                         else:
                                 self.redirect('/')
@@ -253,7 +253,7 @@ class NewPostHandler(webapp2.RequestHandler):
                         #u = User.get_by_id(long(userid))
                         u = query_authors(userid)
                         #if u != None and u.password.split(",")[0]==password_hash:
-                        if u != None and u['password'].split(",")[0]==password_hash:
+                        if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 if not self.request.get('title') or not self.request.get('title'):
                                         self.response.out.write(jinja_env.get_template('newpost.html').render(error="Title required!", title=self.request.get('title'), subtitle=self.request.get('subtitle'), author=self.request.get('author'), content=self.request.get('content'), cover=self.request.get('cover')))
                                         return
@@ -293,7 +293,7 @@ class EditBookHandler(webapp2.RequestHandler):
                         #u = User.get_by_id(long(userid))
                         u = query_authors(userid)
                         #if u != None and u.password.split(",")[0]==password_hash:
-                        if u != None and u['password'].split(",")[0]==password_hash:
+                        if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 p = single_post(post_id)
                                 self.response.out.write(jinja_env.get_template('editpost.html').render(post=p))
                         else:
@@ -308,7 +308,7 @@ class EditBookHandler(webapp2.RequestHandler):
                         #u = User.get_by_id(long(userid))
                         u = query_authors(userid)
                         #if u != None and u.password.split(",")[0]==password_hash:
-                        if u != None and u['password'].split(",")[0]==password_hash:
+                        if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 #b = Book.get_by_id(long(book_id))
                                 table = get_post_table()
                                 title = urlparse.unquote_plus(post_id)
