@@ -170,7 +170,7 @@ class _NetlocResultMixinBase(object):
             try:
                 port = int(port, 10)
             except ValueError:
-                message = f'Port could not be cast to integer value as {port!r}'
+                message = f'Port could not be cast to integer value as {port}'
                 raise ValueError, message from None
             if not ( 0 <= port <= 65535):
                 raise ValueError("Port out of range 0-65535")
