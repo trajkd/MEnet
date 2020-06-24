@@ -261,7 +261,7 @@ class NewPostHandler(webapp2.RequestHandler):
                                 title = self.request.get('title')
                                 posts = all_posts()
                                 for post in posts:
-                                        if post.title == title:
+                                        if post['title'] == title:
                                                 self.response.out.write(jinja_env.get_template('newpost.html').render(error="Post with same title already added!", title=self.request.get('title'), subtitle=self.request.get('subtitle'), author=self.request.get('author'), content=self.request.get('content'), cover=self.request.get('cover')))
                                                 return
                                 dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
