@@ -285,7 +285,7 @@ class NewPostHandler(webapp2.RequestHandler):
                 else:
                         self.redirect('/')
 
-class EditBookHandler(webapp2.RequestHandler):
+class EditPostHandler(webapp2.RequestHandler):
         def get(self, post_id):
                 userid_cookie = self.request.cookies.get("userid")
                 if userid_cookie:
@@ -482,7 +482,7 @@ app = webapp2.WSGIApplication([
         ('/', MainPage),
         ('/index.html', MainPage),
         (r'/posts/(.+)', PermalinkHandler),
-        (r'/(.+)/edit', EditBookHandler),
+        (r'/(.+)/edit', EditPostHandler),
         ('/new', NewPostHandler),
         ('/login', LoginHandler),
         ('/logout', LogoutHandler),
