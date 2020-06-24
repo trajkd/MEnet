@@ -245,65 +245,65 @@ _SplitResultBase = namedtuple(
 _ParseResultBase = namedtuple(
     'ParseResult', 'scheme netloc path params query fragment')
 
-_DefragResultBase.__doc__ = """
-DefragResult(url, fragment)
+# _DefragResultBase.__doc__ = """
+# DefragResult(url, fragment)
 
-A 2-tuple that contains the url without fragment identifier and the fragment
-identifier as a separate argument.
-"""
+# A 2-tuple that contains the url without fragment identifier and the fragment
+# identifier as a separate argument.
+# """
 
-_DefragResultBase.url.__doc__ = """The URL with no fragment identifier."""
+# _DefragResultBase.url.__doc__ = """The URL with no fragment identifier."""
 
-_DefragResultBase.fragment.__doc__ = """
-Fragment identifier separated from URL, that allows indirect identification of a
-secondary resource by reference to a primary resource and additional identifying
-information.
-"""
+# _DefragResultBase.fragment.__doc__ = """
+# Fragment identifier separated from URL, that allows indirect identification of a
+# secondary resource by reference to a primary resource and additional identifying
+# information.
+# """
 
-_SplitResultBase.__doc__ = """
-SplitResult(scheme, netloc, path, query, fragment)
+# _SplitResultBase.__doc__ = """
+# SplitResult(scheme, netloc, path, query, fragment)
 
-A 5-tuple that contains the different components of a URL. Similar to
-ParseResult, but does not split params.
-"""
+# A 5-tuple that contains the different components of a URL. Similar to
+# ParseResult, but does not split params.
+# """
 
-_SplitResultBase.scheme.__doc__ = """Specifies URL scheme for the request."""
+# _SplitResultBase.scheme.__doc__ = """Specifies URL scheme for the request."""
 
-_SplitResultBase.netloc.__doc__ = """
-Network location where the request is made to.
-"""
+# _SplitResultBase.netloc.__doc__ = """
+# Network location where the request is made to.
+# """
 
-_SplitResultBase.path.__doc__ = """
-The hierarchical path, such as the path to a file to download.
-"""
+# _SplitResultBase.path.__doc__ = """
+# The hierarchical path, such as the path to a file to download.
+# """
 
-_SplitResultBase.query.__doc__ = """
-The query component, that contains non-hierarchical data, that along with data
-in path component, identifies a resource in the scope of URI's scheme and
-network location.
-"""
+# _SplitResultBase.query.__doc__ = """
+# The query component, that contains non-hierarchical data, that along with data
+# in path component, identifies a resource in the scope of URI's scheme and
+# network location.
+# """
 
-_SplitResultBase.fragment.__doc__ = """
-Fragment identifier, that allows indirect identification of a secondary resource
-by reference to a primary resource and additional identifying information.
-"""
+# _SplitResultBase.fragment.__doc__ = """
+# Fragment identifier, that allows indirect identification of a secondary resource
+# by reference to a primary resource and additional identifying information.
+# """
 
-_ParseResultBase.__doc__ = """
-ParseResult(scheme, netloc, path, params, query, fragment)
+# _ParseResultBase.__doc__ = """
+# ParseResult(scheme, netloc, path, params, query, fragment)
 
-A 6-tuple that contains components of a parsed URL.
-"""
+# A 6-tuple that contains components of a parsed URL.
+# """
 
-_ParseResultBase.scheme.__doc__ = _SplitResultBase.scheme.__doc__
-_ParseResultBase.netloc.__doc__ = _SplitResultBase.netloc.__doc__
-_ParseResultBase.path.__doc__ = _SplitResultBase.path.__doc__
-_ParseResultBase.params.__doc__ = """
-Parameters for last path element used to dereference the URI in order to provide
-access to perform some operation on the resource.
-"""
+# _ParseResultBase.scheme.__doc__ = _SplitResultBase.scheme.__doc__
+# _ParseResultBase.netloc.__doc__ = _SplitResultBase.netloc.__doc__
+# _ParseResultBase.path.__doc__ = _SplitResultBase.path.__doc__
+# _ParseResultBase.params.__doc__ = """
+# Parameters for last path element used to dereference the URI in order to provide
+# access to perform some operation on the resource.
+# """
 
-_ParseResultBase.query.__doc__ = _SplitResultBase.query.__doc__
-_ParseResultBase.fragment.__doc__ = _SplitResultBase.fragment.__doc__
+# _ParseResultBase.query.__doc__ = _SplitResultBase.query.__doc__
+# _ParseResultBase.fragment.__doc__ = _SplitResultBase.fragment.__doc__
 
 
 # For backwards compatibility, alias _NetlocResultMixinStr
