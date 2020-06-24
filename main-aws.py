@@ -273,7 +273,7 @@ class NewPostHandler(webapp2.RequestHandler):
                                         'quod': date.today().strftime("%B %d, %Y"),
                                         'content': self.request.get('content'),
                                         'cover': self.request.get('cover'),
-                                        'permalink': parse.quote_plus(self.request.get('title').lower())
+                                        'permalink': parse.quote_plus(str(self.request.get('title')).lower())
                                     }
                                 )
                                 all_posts(True)
