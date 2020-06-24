@@ -5,6 +5,9 @@ import jinja2
 
 import boto3
 
+os.environ['AWS_PROFILE'] = "Default"
+os.environ['AWS_DEFAULT_REGION'] = "us-west-2"
+
 from datetime import date
 import urlparse
 
