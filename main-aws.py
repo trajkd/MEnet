@@ -312,11 +312,10 @@ class EditBookHandler(webapp2.RequestHandler):
                         if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 #b = Book.get_by_id(long(book_id))
                                 table = get_post_table()
-                                title = parse.unquote_plus(post_id)
                                 if self.request.get('title') != '':
                                         response = table.update_item(
                                             Key={
-                                                'title': title
+                                                'permalink': post_id
                                             },
                                             UpdateExpression="set title=:t",
                                             ExpressionAttributeValues={
@@ -327,7 +326,7 @@ class EditBookHandler(webapp2.RequestHandler):
                                 if self.request.get('subtitle') != '':
                                         response = table.update_item(
                                             Key={
-                                                'title': title
+                                                'permalink': post_id
                                             },
                                             UpdateExpression="set subtitle=:s",
                                             ExpressionAttributeValues={
@@ -338,7 +337,7 @@ class EditBookHandler(webapp2.RequestHandler):
                                 if self.request.get('author') != '':
                                         response = table.update_item(
                                             Key={
-                                                'title': title
+                                                'permalink': post_id
                                             },
                                             UpdateExpression="set author=:a",
                                             ExpressionAttributeValues={
@@ -350,7 +349,7 @@ class EditBookHandler(webapp2.RequestHandler):
                                         #b.title = self.request.get('title')
                                         response = table.update_item(
                                             Key={
-                                                'title': title
+                                                'permalink': post_id
                                             },
                                             UpdateExpression="set content=:c",
                                             ExpressionAttributeValues={
@@ -362,7 +361,7 @@ class EditBookHandler(webapp2.RequestHandler):
                                         #b.title = self.request.get('title')
                                         response = table.update_item(
                                             Key={
-                                                'title': title
+                                                'permalink': post_id
                                             },
                                             UpdateExpression="set cover=:v",
                                             ExpressionAttributeValues={
@@ -481,6 +480,7 @@ class StaticFileHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
         ('/', MainPage),
+        ('/index.html', MainPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/(.+)/edit', EditBookHandler),
         ('/new', NewPostHandler),
