@@ -306,7 +306,7 @@ class EditBookHandler(webapp2.RequestHandler):
                         userid = userid_cookie.split("|")[0]
                         password_hash = userid_cookie.split("|")[1]
                         #u = User.get_by_id(long(userid))
-                        u = query_users(userid)
+                        u = query_authors(userid)
                         #if u != None and u.password.split(",")[0]==password_hash:
                         if u != None and u['password'].split(",")[0]==password_hash:
                                 #b = Book.get_by_id(long(book_id))
@@ -394,7 +394,7 @@ class SignupHandler(webapp2.RequestHandler):
                 email = self.request.get("email")
                 if (valid_username(username) and valid_password(password) and valid_email(email) and password == verify):
                         #if len(db.Query(User).filter("username =", username).fetch(limit=1))==0:
-                        if len(query_users(username))==0:
+                        if len(query_authors(username))==0:
                                 password = make_pw_hash(username, password)
                                 #u = User(username=username, password=password, email=email)
                                 #u.put()
@@ -449,7 +449,7 @@ class LoginHandler(Handler):
                 username = self.request.get("username")
                 password = self.request.get("password")
                 #u = db.Query(User).filter("username =", username).fetch(limit=1)
-                u = query_users(username)
+                u = query_authors(username)
                 if not len(u)==0 and valid_pw(username, password, u[0].password):
                         #self.response.headers.add_header("Set-Cookie", "userid=%s; Path=/"%(str(u[0].key().id())+"|"+str(u[0].password)))
                         self.response.headers.add_header("Set-Cookie", "userid=%s; Path=/"%(str(u[0]['username'])+"|"+str(u[0]['password'])))
