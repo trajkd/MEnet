@@ -217,8 +217,8 @@ def single_post(post_id, update=False, delete=False):
 
 class MainPage(webapp2.RequestHandler):
         def get(self):
-				posts = all_posts()
-				self.response.out.write(jinja_env.get_template('index.html').render(posts=posts))
+            posts = all_posts()
+            self.response.out.write(jinja_env.get_template('index.html').render(posts=posts))
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
