@@ -206,12 +206,9 @@ def single_post(post_id, update=False, delete=False):
         #       book = memcache.get(key)
         #       if book is None or update:
         #               #book = Book.get_by_id(long(book_id))
-        print(post_id)
         table = get_post_table()
         try:
-            response = table.get_item(Key={'title': post_id})
-            print('________')
-            print(response)
+            response = table.get_item(Key={'permalink': post_id[:-5]})
         except ClientError as e:
             print(e.response['Error']['Message'])
         else:
