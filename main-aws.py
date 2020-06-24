@@ -165,7 +165,7 @@ def scan_posts(dynamodb=None):
 
     table = dynamodb.Table('Post')
     scan_kwargs = {
-        'ProjectionExpression': "title, subtitle, author, when, cover, content, permalink"
+        'ProjectionExpression': "title, subtitle, author, quod, cover, content, permalink"
     }
 
     done = False
@@ -270,7 +270,7 @@ class NewPostHandler(webapp2.RequestHandler):
                                         'title': self.request.get('title'),
                                         'subtitle': self.request.get('subtitle'),
                                         'author': self.request.get('author'),
-                                        'when': date.today().strftime("%B %d, %Y"),
+                                        'quod': date.today().strftime("%B %d, %Y"),
                                         'content': self.request.get('content'),
                                         'cover': self.request.get('cover'),
                                         'permalink': urlparse.quote_plus(self.request.get('title').lower())
