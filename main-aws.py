@@ -110,13 +110,13 @@ def create_post_table(dynamodb=None):
             TableName='Post',
            KeySchema=[
                 {
-                'AttributeName': 'title',
+                'AttributeName': 'permalink',
                 'KeyType': 'HASH'
                 }
             ],
             AttributeDefinitions=[
                 {
-                    'AttributeName': 'title',
+                    'AttributeName': 'permalink',
                     'AttributeType': 'S'
                 }
             ],
