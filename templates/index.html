@@ -101,6 +101,24 @@
     </div>
   </header>
 
+  <div class="container" id="blog">
+      <div class="row" data-aos="slide-up">
+          <div class="col-md-10 col-lg-8">
+              {% for post in posts %}
+              <div class="post-preview">
+                  <a href="blogs/{{post['permalink']}}.html">
+                      <h2 class="post-title">{{post['title'] | safe}}</h2>
+                      <h3 class="post-subtitle">{{post['subtitle'] | safe}}</h3>
+                  </a>
+                  <p class="post-meta">Posted by&nbsp;<a href="#">{{post['author'] | safe}}</a> on {{post['date']}}</p>
+              </div>
+              <hr>
+              {% endfor %}
+              <div class="clearfix"></div>
+          </div>
+      </div>
+  </div>
+
   <div class="container copyright">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">

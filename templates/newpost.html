@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+
+  <title>Add Post</title>
+
+</head>
+<body>
+	<a href="/">
+    <img class="logo" src="../static/img/logomobile.jpeg" border="0" height="80" width="60">
+  </a>
+  <form method='POST' enctype='multipart/form-data' action='/new'><h2>Add new post</h2>
+  	<table>
+  		<tbody>
+		  	<tr>
+		  		<td>Title</td><td><input name='title' type='textarea' placeholder='Title' value="{{title}}"></td>
+		  	</tr>
+		  	<tr>
+		  		<td>Subtitle</td><td><input name='subtitle' type='textarea' placeholder='Subitle' value="{{subtitle}}"></td>
+		  	</tr>
+		  	<tr>
+		  		<td>Author</td><td><input name='author' type='text' placeholder='Author' value="{{author}}"></td>
+		  	</tr>
+		  	<tr>
+		  		<td>Content</td><td><input name='content' type='textarea' placeholder='Content' value="{{content}}"></td>
+		  	</tr>
+		  	<tr>
+		  		<td>Cover</td><td><input name='cover' type='text' placeholder='Cover' value="{{cover}}"></td>
+		  	</tr>
+  		</tbody>
+  	</table>
+  		
+  	<input type='submit' value='Add'>
+  </form>
+  <br>
+  {{error}}
+</body>
+</html>
