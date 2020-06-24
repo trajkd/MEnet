@@ -9,7 +9,7 @@ os.environ['AWS_PROFILE'] = "Default"
 os.environ['AWS_DEFAULT_REGION'] = "us-west-2"
 
 from datetime import date
-import urllib.parse
+import urlparse
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
@@ -273,7 +273,7 @@ class NewPostHandler(webapp2.RequestHandler):
                                         'quod': date.today().strftime("%B %d, %Y"),
                                         'content': self.request.get('content'),
                                         'cover': self.request.get('cover'),
-                                        'permalink': urllib.parse.quote_plus(self.request.get('title').lower())
+                                        'permalink': urlparse.quote(self.request.get('title').lower())
                                     }
                                 )
                                 all_posts(True)
@@ -311,7 +311,7 @@ class EditBookHandler(webapp2.RequestHandler):
                         if u != None and u[0]['password'].split(",")[0]==password_hash:
                                 #b = Book.get_by_id(long(book_id))
                                 table = get_post_table()
-                                title = urllib.parse.unquote_plus(post_id)
+                                title = urlparse.unquote(post_id)
                                 if self.request.get('title') != '':
                                         response = table.update_item(
                                             Key={
@@ -436,7 +436,7 @@ class Handler(webapp2.RequestHandler):
 
 class PermalinkHandler(Handler):
         def get(self, post_id):
-                p = single_post(urllib.parse.unquote_plus(post_id))
+                p = single_post(urlparse.unquote(post_id))
                 if not p:
                         self.error(404)
                         return
