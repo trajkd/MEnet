@@ -61,7 +61,31 @@
           <div class="site-heading">
             <h1>ME net</h1>
             <span class="subheading"><p><strong>Your idea is a valid one</strong></p> In my ⭕️ netWork you will find collaboration and brainstorming to achieve it</span>
-            <footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" id="blog">
+      <div class="row" data-aos="slide-up">
+          <div class="col-md-10 col-lg-8">
+              {% for post in posts %}
+              <div class="post-preview">
+                  <a href="posts/{{post['permalink']}}.html">
+                      <h2 class="post-title">{{post['title'] | safe}}</h2>
+                      <h3 class="post-subtitle">{{post['subtitle'] | safe}}</h3>
+                  </a>
+                  <p class="post-meta">Posted by&nbsp;<a href="#">{{post['author'] | safe}}</a> on {{post['quod']}}</p>
+              </div>
+              <hr>
+              {% endfor %}
+              <div class="clearfix"></div>
+          </div>
+      </div>
+  </div>
+
+   <footer>
             <div class="container">
               <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
@@ -95,29 +119,6 @@
               </div>
             </div>
           </footer>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="container" id="blog">
-      <div class="row" data-aos="slide-up">
-          <div class="col-md-10 col-lg-8">
-              {% for post in posts %}
-              <div class="post-preview">
-                  <a href="posts/{{post['permalink']}}.html">
-                      <h2 class="post-title">{{post['title'] | safe}}</h2>
-                      <h3 class="post-subtitle">{{post['subtitle'] | safe}}</h3>
-                  </a>
-                  <p class="post-meta">Posted by&nbsp;<a href="#">{{post['author'] | safe}}</a> on {{post['quod']}}</p>
-              </div>
-              <hr>
-              {% endfor %}
-              <div class="clearfix"></div>
-          </div>
-      </div>
-  </div>
 
   <div class="container copyright">
     <div class="row">

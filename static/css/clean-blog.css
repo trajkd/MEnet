@@ -230,7 +230,7 @@ header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
   padding: 150px 0 150px;
-  color: white;
+  color: #343a40;
 }
 
 @media only screen and (min-width: 768px) {
@@ -260,7 +260,6 @@ header.masthead .site-heading .subheading {
   display: block;
   margin: 10px 0 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-shadow: 2px 2px 5px #2e0e02;
 }
 
 @media only screen and (min-width: 768px) {
