@@ -260,6 +260,7 @@ header.masthead .site-heading .subheading {
   display: block;
   margin: 10px 0 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: 0 0 20px white, 0 0 20px white, 0 0 20px white, 0 0 20px white;
 }
 
 @media only screen and (min-width: 768px) {
