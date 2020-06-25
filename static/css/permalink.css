@@ -1,0 +1,5 @@
+/* Change this for hover color of social buttons */
+a:focus, a:hover {
+  color: #db0000;
+}
+

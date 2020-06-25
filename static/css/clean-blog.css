@@ -35,7 +35,7 @@ a {
   transition: all 0.2s;
 }
 
-/* Change this for hover color on social buttons */
+/* Change this for hover color of social buttons */
 a:focus, a:hover {
   color: #db0000;
 }
