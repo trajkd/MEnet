@@ -48,7 +48,7 @@ blockquote {
 @media only screen and (max-width: 768px) {
 
   #mainNav .navbar-brand {
-    transition:font-size 1s;
+    transition: font-size 1s;
     font-size: 15px;
   }
 
@@ -129,11 +129,16 @@ img::-moz-selection {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
-  text-align: right;
+  text-align: center;
   text-transform: uppercase;
 }
 
 @media only screen and (min-width: 992px) {
+
+  .container {
+    margin: 0;
+  }
+
   #mainNav {
     border-bottom: 1px solid transparent;
     background: transparent;
