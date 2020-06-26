@@ -201,7 +201,6 @@ a {
 header.masthead {
   margin-bottom: 0;
   background: no-repeat center center;
-  //background-color: #868e96;
   background-image: url('../img/logo.jpeg');
   background-attachment: scroll;
   position: relative;
