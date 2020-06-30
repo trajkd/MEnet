@@ -143,6 +143,13 @@ $html .='
 $mail = new PHPMailer(true);
 
 try {
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	);
 	//Server settings
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = CONFIG['email']['host'];                    // Set the SMTP server to send through

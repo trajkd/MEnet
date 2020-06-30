@@ -321,7 +321,7 @@ header.masthead {
   }
 }
 
-header.masthead .overlay, header.home-masthead .overlay {
+header.masthead .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -333,7 +333,7 @@ header.masthead .overlay, header.home-masthead .overlay {
 }
 
 @media only screen and (min-width: 769px) {
-  header.masthead .overlay {
+  header.link-masthead .overlay {
     width: 100vw;
     background-color: #212529;
     opacity: 0.5;
