@@ -235,6 +235,7 @@ class MailPHPPage(webapp2.RequestHandler):
             mydata = urllib.urlencode(mydata)
             path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
             req = urllib2.Request(path, mydata)
+            req.add_header("Content-type", "application/x-www-form-urlencoded")
             try:
                 urllib2.urlopen(req)
             except HTTPError as e:
