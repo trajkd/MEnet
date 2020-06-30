@@ -228,11 +228,11 @@ class ContactPage(webapp2.RequestHandler):
 
 class MailPHPPage(webapp2.RequestHandler):
         def get(self):
-            self.response.out.write('mail.php')
+            self.response.out.write(jinja_env.get_template('mail.php').render())
 
 class ConfigPHPPage(webapp2.RequestHandler):
         def get(self):
-            self.response.out.write('config.php')
+            self.response.out.write(jinja_env.get_template('config.php').render())
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
