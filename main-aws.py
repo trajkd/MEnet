@@ -227,9 +227,15 @@ class ContactPage(webapp2.RequestHandler):
             self.response.out.write(jinja_env.get_template('contact.html').render())
 
 import subprocess
+import urllib2, urllib
 class MailPHPPage(webapp2.RequestHandler):
         def post(self):
-            subprocess.call(["php", "./mail.php"])
+            mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
+            mydata = urllib.urlencode(mydata)
+            path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
+            req = urllib2.Request(path, mydata)
+            req.add_header("Content-Type", "multipart/form-data")
+            page = urllib2.urlopen(req).read()
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
