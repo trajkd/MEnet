@@ -103,53 +103,6 @@ signupform="""
     </form>
 """
 
-def send_email(name, email, content)
-    try:
-        mandrill_client = mandrill.Mandrill('qDwjBmC_1ChoFDXbJ2SWwQ')
-        message = {
-         'auto_html': None,
-         'auto_text': None,
-         'from_email': email,
-         'from_name': name,
-         'global_merge_vars': [{'content': 'merge1 content', 'name': 'merge1'}],
-         'headers': {'Reply-To': email},
-         'important': False,
-         'inline_css': None,
-         'merge': True,
-         'merge_language': 'mailchimp',
-         'merge_vars': [{'rcpt': 'hello@mindempathy.net',
-                         'vars': [{'content': 'merge2 content', 'name': 'merge2'}]}],
-         'metadata': {'website': 'www.mindempathy.net'},
-         'preserve_recipients': None,
-         'recipient_metadata': [{'rcpt': 'hello@mindempathy.net',
-                                 'values': {'user_id': 123456}}],
-         'return_path_domain': None,
-         'signing_domain': None,
-         'subject': 'New message from ' + name,
-         'tags': ['password-resets'],
-         'text': content,
-         'to': [{'email': 'hello@mindempathy.net',
-                 'name': 'ME net',
-                 'type': 'to'}],
-         'track_clicks': None,
-         'track_opens': None,
-         'tracking_domain': None,
-         'url_strip_qs': None,
-         'view_content_link': None}
-        result = mandrill_client.messages.send(message=message, async=False, ip_pool='Main Pool', send_at=datetime.now())
-        '''
-        [{'_id': 'abc123abc123abc123abc123abc123',
-          'email': 'recipient.email@example.com',
-          'reject_reason': 'hard-bounce',
-          'status': 'sent'}]
-        '''
-
-    except mandrill.Error, e:
-        # Mandrill errors are thrown as exceptions
-        print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
-        # A mandrill error occurred: <class 'mandrill.UnknownSubaccountError'> - No subaccount exists with the id 'customer-123'
-        raise
-
 def create_post_table(dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.client('dynamodb', region_name='us-west-2')
