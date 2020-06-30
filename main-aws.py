@@ -228,6 +228,7 @@ class ContactPage(webapp2.RequestHandler):
 
 import subprocess
 import urllib2, urllib
+from urllib2 import HTTPError
 class MailPHPPage(webapp2.RequestHandler):
         def post(self):
             mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
