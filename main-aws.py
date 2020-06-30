@@ -228,14 +228,8 @@ class ContactPage(webapp2.RequestHandler):
 
 import subprocess
 class MailPHPPage(webapp2.RequestHandler):
-        def get(self):
-            self.response.out.write(jinja_env.get_template('mail.php').render())
         def post(self):
             subprocess.call(["php", "./mail.php"])
-
-class ConfigPHPPage(webapp2.RequestHandler):
-        def get(self):
-            self.response.out.write(jinja_env.get_template('config.php').render())
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
@@ -499,7 +493,6 @@ app = webapp2.WSGIApplication([
         ('/index.html', MainPage),
         ('/contact.html', ContactPage),
         ('/mail.php', MailPHPPage),
-        ('/config.php', ConfigPHPPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/(.+)/edit', EditPostHandler),
         ('/new', NewPostHandler),
