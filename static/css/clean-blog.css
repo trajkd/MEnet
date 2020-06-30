@@ -321,7 +321,7 @@ header.masthead {
   }
 }
 
-header.masthead .overlay {
+header.masthead .overlay, header.home-masthead .overlay {
   position: absolute;
   top: 0;
   left: 0;

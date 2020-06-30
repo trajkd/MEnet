@@ -222,6 +222,10 @@ class MainPage(webapp2.RequestHandler):
             posts = all_posts()
             self.response.out.write(jinja_env.get_template('index.html').render(posts=posts))
 
+class ContactPage(webapp2.RequestHandler):
+        def get(self):
+            self.response.out.write(jinja_env.get_template('contact.html').render())
+
 def query_authors(username, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
@@ -482,6 +486,7 @@ class StaticFileHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
         ('/', MainPage),
         ('/index.html', MainPage),
+        ('/contact.html', ContactPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/(.+)/edit', EditPostHandler),
         ('/new', NewPostHandler),
