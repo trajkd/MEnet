@@ -235,7 +235,7 @@ class MailPHPPage(webapp2.RequestHandler):
             path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
             req = urllib2.Request(path, mydata)
             req.add_header("Content-Type", "multipart/form-data")
-            handler = urllib.request.urlopen(req)
+            urllib2.urlopen(req)
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
