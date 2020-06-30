@@ -229,18 +229,23 @@ class ContactPage(webapp2.RequestHandler):
 import subprocess
 import urllib2, urllib
 from urllib2 import HTTPError
+import requests
 class MailPHPPage(webapp2.RequestHandler):
         def post(self):
-            mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
-            mydata = urllib.urlencode(mydata)
-            path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
-            req = urllib2.Request(path, mydata)
-            req.add_header("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-            try:
-                page = urllib2.urlopen(req)
-                self.response.out.write(jinja_env.get_template(page).render())
-            except HTTPError as e:
-                content = e.read()
+            # mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
+            # mydata = urllib.urlencode(mydata)
+            # path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
+            # req = urllib2.Request(path, mydata)
+            # req.add_header("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
+            # try:
+            #     page = urllib2.urlopen(req)
+            #     self.response.out.write(jinja_env.get_template(page).render())
+            # except HTTPError as e:
+            #     content = e.read()
+            url = 'http://www.mindempathy.net/mail.php' 
+            data={'name': self.request.get('name'), 'email': self.request.get('email'), 'phone': self.request.get('phone'), 'message': self.request.get('message'), 'file[]': self.request.get('file[]')}
+            r = requests.post(url, data)
+            self.response.out.write(r.content)
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
