@@ -229,6 +229,8 @@ class ContactPage(webapp2.RequestHandler):
 class MailPHPPage(webapp2.RequestHandler):
         def get(self):
             self.response.out.write(jinja_env.get_template('mail.php').render())
+        def post(self):
+            self.response.out.write(jinja_env.get_template('mail.php').render())
 
 class ConfigPHPPage(webapp2.RequestHandler):
         def get(self):
