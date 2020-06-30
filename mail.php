@@ -145,12 +145,12 @@ $mail = new PHPMailer(true);
 try {
 	//Server settings
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = CONFIG['email']['host'];                    // Set the SMTP server to send through
+    $mail->Host       = 'smtp.zoho.eu';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = CONFIG['email']['username'];                     // SMTP username
-    $mail->Password   = CONFIG['email']['password'];                               // SMTP password
-    $mail->SMTPSecure = CONFIG['email']['SMTPSecure']; 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = CONFIG['email']['port'];                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->Username   = 'moreondt@gmail.com';                     // SMTP username
+    $mail->Password   = 'Dragana*7';                               // SMTP password
+    $mail->SMTPSecure = 'tls'; 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
     $mail->setFrom('hello@mindempathy.net', $name);
