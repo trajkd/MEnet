@@ -238,7 +238,7 @@ class MailPHPPage(webapp2.RequestHandler):
             req.add_header("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
             try:
                 page = urllib2.urlopen(req)
-                print page
+                self.response.out.write(jinja_env.get_template(page).render())
             except HTTPError as e:
                 content = e.read()
 
