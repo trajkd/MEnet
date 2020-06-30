@@ -245,7 +245,7 @@ class MailPHPPage(webapp2.RequestHandler):
             url = 'http://www.mindempathy.net/mail.php' 
             data={'name': self.request.get('name'), 'email': self.request.get('email'), 'phone': self.request.get('phone'), 'message': self.request.get('message'), 'file[]': self.request.get('file[]')}
             r = requests.post(url, data)
-            self.response.out.write(r.content)
+            self.response.out(r.content)
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
