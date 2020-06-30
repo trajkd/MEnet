@@ -341,7 +341,7 @@ header.masthead .overlay {
 }
 
 @media only screen and (max-width: 768px) {
-  header.masthead .overlay {
+  header.link-masthead .overlay {
     width: 100vw;
     background-color: #fff;
   }
