@@ -226,6 +226,14 @@ class ContactPage(webapp2.RequestHandler):
         def get(self):
             self.response.out.write(jinja_env.get_template('contact.html').render())
 
+class MailPHPPage(webapp2.RequestHandler):
+        def get(self):
+            self.response.out.write('mail.php')
+
+class ConfigPHPPage(webapp2.RequestHandler):
+        def get(self):
+            self.response.out.write('config.php')
+
 def query_authors(username, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
@@ -487,6 +495,8 @@ app = webapp2.WSGIApplication([
         ('/', MainPage),
         ('/index.html', MainPage),
         ('/contact.html', ContactPage),
+        ('/mail.php', MailPHPPage),
+        ('/config.php', ConfigPHPPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/(.+)/edit', EditPostHandler),
         ('/new', NewPostHandler),
