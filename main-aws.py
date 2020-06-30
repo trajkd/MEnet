@@ -236,7 +236,7 @@ class MailPHPPage(webapp2.RequestHandler):
             req = urllib2.Request(path, mydata)
             req.add_header("Content-Type", "multipart/form-data")
             try:
-                handler = urllib2.urlopen(req)
+                handler = urllib.request.urlopen(req)
             except HTTPError as e:
                 content = e.read()
 
