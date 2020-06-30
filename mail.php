@@ -3,7 +3,6 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'config.php';
 require 'static/vendor/autoload.php';
 
 function restructureArray(array $arr) {
