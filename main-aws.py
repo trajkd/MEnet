@@ -226,17 +226,12 @@ class ContactPage(webapp2.RequestHandler):
         def get(self):
             self.response.out.write(jinja_env.get_template('contact.html').render())
 
+import subprocess
 class MailPHPPage(webapp2.RequestHandler):
         def get(self):
             self.response.out.write(jinja_env.get_template('mail.php').render())
         def post(self):
-            self.response.headers.add_header('Content-Type', 'multipart/form-data;')
-            self.response.headers.add_header('Content-Disposition', 'form-data; name="name"' + self.request.get('name'))
-            self.response.headers.add_header('Content-Disposition', 'form-data; name="email"' + self.request.get('email'))
-            self.response.headers.add_header('Content-Disposition', 'form-data; name="phone"' + self.request.get('phone'))
-            self.response.headers.add_header('Content-Disposition', 'form-data; name="message"' + self.request.get('message'))
-            self.response.headers.add_header('Content-Disposition', 'form-data; name="file[]"' + self.request.get('file[]'))
-            self.response.out.write(jinja_env.get_template('mail.php').render())
+            subprocess.call("php ./mail.php")
 
 class ConfigPHPPage(webapp2.RequestHandler):
         def get(self):
