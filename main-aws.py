@@ -246,7 +246,7 @@ class MailPHPPage(webapp2.RequestHandler):
             # data={'name': self.request.get('name'), 'email': self.request.get('email'), 'phone': self.request.get('phone'), 'message': self.request.get('message'), 'file[]': self.request.get('file[]')}
             # r = requests.post(url, data)
             # self.response.out(r.content)
-            result = subprocess.run(
+            result = subprocess.call(
                 ['php', 'mail.php'],    # program and arguments
                 stdout=subprocess.PIPE,  # capture stdout
                 check=True               # raise exception if program fails
