@@ -252,7 +252,7 @@ class MailPHPPage(webapp2.RequestHandler):
             phone = self.request.get('phone')
             message = self.request.get('message')
             file = self.request.get('file[]')
-            print chardet.detect(file)
+            print file
             cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, chardet.detect(file))]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             return webapp2.Response(result.stdout.read())
