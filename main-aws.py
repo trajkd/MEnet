@@ -248,10 +248,9 @@ class MailPHPPage(webapp2.RequestHandler):
             # self.response.out(r.content)
             result = subprocess.check_output(
                 ['php', 'mail.php'],    # program and arguments
-                stdout=subprocess.PIPE,  # capture stdout
                 stderr=subprocess.STDOUT
             )
-            print(result.stdout)         # result.stdout contains a byte-string
+            print(result)         # result.stdout contains a byte-string
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
