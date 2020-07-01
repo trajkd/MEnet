@@ -33,7 +33,7 @@ function responseHandler($status, $msg) {
 	}
 	exit;
 }
-echo $argv[5];
+
 $files = [];
 if (!empty($argv[5]['file'])) {
 	$files = restructureArray($argv[5]['file']);
