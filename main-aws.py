@@ -253,7 +253,7 @@ class MailPHPPage(webapp2.RequestHandler):
             file = self.request.get('file[]')
             cmd = ['php mail.php {name} {email} {phone} {message} {file}']
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-            print result.stdout
+            print result.stdout.read()
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
