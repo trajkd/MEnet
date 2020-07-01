@@ -251,7 +251,7 @@ class MailPHPPage(webapp2.RequestHandler):
             phone = self.request.get('phone')
             message = self.request.get('message')
             file = self.request.get('file[]')
-            cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, file)]
+            cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, file.decode('utf-8'))]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             return webapp2.Response(result.stdout.read())
 
