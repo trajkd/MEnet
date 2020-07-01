@@ -183,5 +183,5 @@ try {
     $mail->send();
     responseHandler(true, 'Message sent successfully!');
 } catch (Exception $e) {
-	responseHandler(false, 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo);
+	responseHandler(false, 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo);
 }
