@@ -35,11 +35,14 @@ function responseHandler($status, $msg) {
 }
 
 $files = [];
-if (!empty($_FILES['file'])) {
-	$files = restructureArray($_FILES['file']);
+if (!empty($argv[5]['file'])) {
+	$files = restructureArray($argv[5]['file']);
 }
 
-list($name, $email, $phone, $message) = array_values($_POST);
+$name = $argv[1];
+$email = $argv[2];
+$phone = $argv[3];
+$message = $argv[4];
 
 $html = '
 <!DOCTYPE html>
@@ -142,13 +145,6 @@ $html .='
 $mail = new PHPMailer(true);
 
 try {
-	$mail->SMTPOptions = array(
-		'ssl' => array(
-			'verify_peer' => false,
-			'verify_peer_name' => false,
-			'allow_self_signed' => true
-		)
-	);
 	//Server settings
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.zoho.eu';                    // Set the SMTP server to send through

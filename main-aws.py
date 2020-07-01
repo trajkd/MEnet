@@ -226,10 +226,10 @@ class ContactPage(webapp2.RequestHandler):
         def get(self):
             self.response.out.write(jinja_env.get_template('contact.html').render())
 
-import subprocess
-import urllib2, urllib
-from urllib2 import HTTPError
+# import urllib2, urllib
+# from urllib2 import HTTPError
 # import requests
+import subprocess
 class MailPHPPage(webapp2.RequestHandler):
         def post(self):
             # mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
@@ -246,11 +246,14 @@ class MailPHPPage(webapp2.RequestHandler):
             # data={'name': self.request.get('name'), 'email': self.request.get('email'), 'phone': self.request.get('phone'), 'message': self.request.get('message'), 'file[]': self.request.get('file[]')}
             # r = requests.post(url, data)
             # self.response.out(r.content)
-            result = subprocess.check_output(
-                ['php', 'mail.php'],    # program and arguments
-                stderr=subprocess.STDOUT
-            )
-            print(result)         # result.stdout contains a byte-string
+            name = self.request.get('name')
+            email = self.request.get('email')
+            phone = self.request.get('phone')
+            message = self.request.get('message')
+            file = self.request.get('file[]')
+            cmd = rf'php mail.php {name} {email} {phone} {message} {file}'
+            result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+            print result.stdout
 
 def query_authors(username, dynamodb=None):
     if not dynamodb:
