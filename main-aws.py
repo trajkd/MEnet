@@ -533,9 +533,9 @@ def main():
     from OpenSSL import crypto
 
     context = SSL.Context(SSL.SSLv23_METHOD)
-    context.use_privatekey_file("privkey.pem")
-    context.use_certificate_chain_file("fullchain.pem")
-    context.load_tmp_dh("dhparams.pem")
+    context.use_privatekey_file("/root/MEnet/privkey.pem")
+    context.use_certificate_chain_file("/root/MEnet/fullchain.pem")
+    context.load_tmp_dh("/root/MEnet/dhparams.pem")
     context.set_tmp_ecdh(crypto.get_elliptic_curve("prime256v1"))
     context.set_options(SSL.OP_NO_SSLv2)
     context.set_options(SSL.OP_NO_SSLv3)
