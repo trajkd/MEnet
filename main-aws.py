@@ -529,20 +529,20 @@ app = webapp2.WSGIApplication([
 
 def main():
     from paste import httpserver
-    from OpenSSL import SSL
-    from OpenSSL import crypto
+    # from OpenSSL import SSL
+    # from OpenSSL import crypto
 
-    context = SSL.Context(SSL.SSLv23_METHOD)
-    context.use_privatekey_file("/root/MEnet/privkey.pem")
-    context.use_certificate_chain_file("/root/MEnet/fullchain.pem")
-    context.load_tmp_dh("/root/MEnet/dhparams.pem")
-    context.set_tmp_ecdh(crypto.get_elliptic_curve("prime256v1"))
-    context.set_options(SSL.OP_NO_SSLv2)
-    context.set_options(SSL.OP_NO_SSLv3)
-    context.set_options(SSL.OP_SINGLE_DH_USE)
-    context.set_cipher_list("EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:EDH+aRSA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4")
+    # context = SSL.Context(SSL.SSLv23_METHOD)
+    # context.use_privatekey_file("/root/MEnet/privkey.pem")
+    # context.use_certificate_chain_file("/root/MEnet/fullchain.pem")
+    # context.load_tmp_dh("/root/MEnet/dhparams.pem")
+    # context.set_tmp_ecdh(crypto.get_elliptic_curve("prime256v1"))
+    # context.set_options(SSL.OP_NO_SSLv2)
+    # context.set_options(SSL.OP_NO_SSLv3)
+    # context.set_options(SSL.OP_SINGLE_DH_USE)
+    # context.set_cipher_list("EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:EDH+aRSA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4")
 
-    httpserver.serve(app, host='172.31.2.94', port='80', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
-
+    # httpserver.serve(app, host='172.31.2.94', port='80', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
+    httpserver.serve(app, host='172.31.2.94', port='80')
 if __name__ == '__main__':
     main()
