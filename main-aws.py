@@ -527,12 +527,14 @@ app = webapp2.WSGIApplication([
         (r'/static/(.+)', StaticFileHandler)
 ], debug = True)
 
-def main():
+from BaseHTTPServer import BaseHTTPRequestHandler
+import ssl
+def main(server_class=BaseHTTPServer.HTTPServer,
+        handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
     # from paste import httpserver
     # httpserver.serve(app, host='172.31.0.134', port='80')
-    from BaseHTTPServer import BaseHTTPRequestHandler
-    import ssl
 
+    httpd = server_class(server_address, handler_class)
     server_address = ('172.31.0.134', 80)
     httpd = BaseHTTPServer.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
     httpd.socket = ssl.wrap_socket(httpd.socket,
