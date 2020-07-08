@@ -536,7 +536,7 @@ def main(server_class=BaseHTTPServer.HTTPServer,
 
     server_address = ('172.31.8.153', 80)
     httpd = server_class(server_address, handler_class)
-    httpd.socket = ssl.wrap_socket(httpd.socket,
+    httpd.socket = _ssl.wrap_socket(httpd.socket,
                                    server_side=True,
                                    certfile='fullchain.pem',
                                    ssl_version=_ssl.PROTOCOL_TLS)
