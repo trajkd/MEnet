@@ -537,7 +537,7 @@ def main():
 
     httpd = SocketServer.TCPServer(('172.31.8.153', 80), SimpleHTTPServer.SimpleHTTPRequestHandler)
 
-    print "serving at port", PORT
+    print "Started serving"
     # httpd.socket = ssl.wrap_socket(httpd.socket,
     #                                server_side=True,
     #                                certfile='fullchain.pem',
