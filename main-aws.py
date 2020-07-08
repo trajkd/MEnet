@@ -535,7 +535,7 @@ def main():
     context.use_privatekey_file("./privkey.pem")
     context.use_certificate_chain_file("./fullchain.pem")
 
-    httpserver.serve(app, host='172.31.8.153', port='80', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
+    httpserver.serve(app, host='172.31.8.153', port='443', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
 
 if __name__ == '__main__':
     main()
