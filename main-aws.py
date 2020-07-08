@@ -534,7 +534,7 @@ def main():
     import ssl
 
     server_address = ('172.31.0.134', 80)
-    httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
+    httpd = BaseHTTPServer.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
                                    certfile='fullchain.pem',
