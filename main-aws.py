@@ -534,8 +534,8 @@ def main(server_class=BaseHTTPServer.HTTPServer,
     # from paste import httpserver
     # httpserver.serve(app, host='172.31.0.134', port='80')
 
-    httpd = server_class(server_address, handler_class)
     server_address = ('172.31.0.134', 80)
+    httpd = server_class(server_address, handler_class)
     httpd = BaseHTTPServer.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
