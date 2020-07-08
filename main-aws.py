@@ -528,21 +528,16 @@ app = webapp2.WSGIApplication([
 ], debug = True)
 
 def main():
-    from paste import httpserver
-    # from OpenSSL import SSL
-    # from OpenSSL import crypto
+    # from paste import httpserver
+    # httpserver.serve(app, host='172.31.0.134', port='80')
+    import http.server, ssl
 
-    # context = SSL.Context(SSL.SSLv23_METHOD)
-    # context.use_privatekey_file("/root/MEnet/privkey.pem")
-    # context.use_certificate_chain_file("/root/MEnet/fullchain.pem")
-    # context.load_tmp_dh("/root/MEnet/dhparams.pem")
-    # context.set_tmp_ecdh(crypto.get_elliptic_curve("prime256v1"))
-    # context.set_options(SSL.OP_NO_SSLv2)
-    # context.set_options(SSL.OP_NO_SSLv3)
-    # context.set_options(SSL.OP_SINGLE_DH_USE)
-    # context.set_cipher_list("EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:EDH+aRSA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4")
-
-    # httpserver.serve(app, host='172.31.0.134', port='80', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
-    httpserver.serve(app, host='172.31.0.134', port='80')
+    server_address = ('172.31.0.134', 80)
+    httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(httpd.socket,
+                                   server_side=True,
+                                   certfile='fullchain.pem',
+                                   ssl_version=ssl.PROTOCOL_TLS)
+    httpd.serve_forever()
 if __name__ == '__main__':
     main()
