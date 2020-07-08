@@ -534,7 +534,6 @@ def main():
     context = SSL.Context(SSL.SSLv23_METHOD)
     context.use_privatekey_file("./privkey.pem")
     context.use_certificate_chain_file("./fullchain.pem")
-    logger.debug("OPENSSL version: %s" % SSL.SSLeay_version(SSL.SSLEAY_VERSION))
 
     httpserver.serve(app, host='172.31.8.153', port='80', ssl_context=context, use_threadpool=True, threadpool_workers=15, request_queue_size=5)
 
