@@ -527,7 +527,7 @@ app = webapp2.WSGIApplication([
         (r'/static/(.+)', StaticFileHandler)
 ], debug = True)
 
-from BaseHTTPServer import BaseHTTPRequestHandler
+import BaseHTTPServer
 import ssl
 def main(server_class=BaseHTTPServer.HTTPServer,
         handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
