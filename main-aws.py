@@ -539,7 +539,7 @@ def main(server_class=BaseHTTPServer.HTTPServer,
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
                                    certfile='fullchain.pem',
-                                   ssl_version=ssl.PROTOCOL_TLS)
+                                   ssl_version=ssl.PROTOCOL_TLSv1_2)
     httpd.serve_forever()
 if __name__ == '__main__':
     main()
