@@ -527,8 +527,7 @@ app = webapp2.WSGIApplication([
         (r'/static/(.+)', StaticFileHandler)
 ], debug = True)
 
-def main(server_class=BaseHTTPServer.HTTPServer,
-        handler_class=BaseHTTPServer.SimpleHTTPRequestHandler):
+def main():
     # from paste import httpserver
     # httpserver.serve(app, host='172.31.8.153', port='80')
 
