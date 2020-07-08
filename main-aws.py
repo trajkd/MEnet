@@ -530,7 +530,8 @@ app = webapp2.WSGIApplication([
 def main():
     # from paste import httpserver
     # httpserver.serve(app, host='172.31.0.134', port='80')
-    import http.server, ssl
+    from BaseHTTPServer import BaseHTTPRequestHandler
+    import ssl
 
     server_address = ('172.31.0.134', 80)
     httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
