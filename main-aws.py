@@ -528,7 +528,7 @@ app = webapp2.WSGIApplication([
 ], debug = True)
 
 import BaseHTTPServer
-import ssl
+import _ssl
 def main(server_class=BaseHTTPServer.HTTPServer,
         handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
     # from paste import httpserver
@@ -539,7 +539,7 @@ def main(server_class=BaseHTTPServer.HTTPServer,
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
                                    certfile='fullchain.pem',
-                                   ssl_version=ssl.PROTOCOL_TLS)
+                                   ssl_version=_ssl.PROTOCOL_TLS)
     httpd.serve_forever()
 if __name__ == '__main__':
     main()
