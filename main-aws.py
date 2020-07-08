@@ -527,15 +527,18 @@ app = webapp2.WSGIApplication([
         (r'/static/(.+)', StaticFileHandler)
 ], debug = True)
 
-import BaseHTTPServer
-import ssl
 def main(server_class=BaseHTTPServer.HTTPServer,
-        handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
+        handler_class=BaseHTTPServer.SimpleHTTPRequestHandler):
     # from paste import httpserver
     # httpserver.serve(app, host='172.31.8.153', port='80')
 
-    server_address = ('172.31.8.153', 80)
-    httpd = server_class(server_address, handler_class)
+    import SimpleHTTPServer
+    import SocketServer
+    import ssl
+
+    httpd = SocketServer.TCPServer(('172.31.8.153', 80), SimpleHTTPServer.SimpleHTTPRequestHandler)
+
+    print "serving at port", PORT
     # httpd.socket = ssl.wrap_socket(httpd.socket,
     #                                server_side=True,
     #                                certfile='fullchain.pem',
