@@ -536,11 +536,11 @@ def main(server_class=BaseHTTPServer.HTTPServer,
 
     server_address = ('172.31.8.153', 80)
     httpd = server_class(server_address, handler_class)
-    httpd.socket = ssl.wrap_socket(httpd.socket,
-                                   server_side=True,
-                                   certfile='fullchain.pem',
-                                   keyfile="privkey.pem",
-                                   ssl_version=ssl.PROTOCOL_SSLv23)
+    # httpd.socket = ssl.wrap_socket(httpd.socket,
+    #                                server_side=True,
+    #                                certfile='fullchain.pem',
+    #                                keyfile="privkey.pem",
+    #                                ssl_version=ssl.PROTOCOL_SSLv23)
     httpd.serve_forever()
 if __name__ == '__main__':
     main()
