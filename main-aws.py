@@ -519,7 +519,7 @@ app = webapp2.WSGIApplication([
         ('/contact.html', ContactPage),
         ('/mail.php', MailPHPPage),
         (r'/posts/(.+)', PermalinkHandler),
-        (r'/(.+)/edit', EditPostHandler),
+        (r'/edit/(.+)', EditPostHandler),
         ('/new', NewPostHandler),
         ('/login', LoginHandler),
         ('/logout', LogoutHandler),
