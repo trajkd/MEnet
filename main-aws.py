@@ -515,8 +515,8 @@ class StaticFileHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
         ('/', MainPage),
-        ('/index.html', MainPage),
-        ('/contact.html', ContactPage),
+        ('/index', MainPage),
+        ('/contact', ContactPage),
         ('/mail.php', MailPHPPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/edit/(.+)', EditPostHandler),
