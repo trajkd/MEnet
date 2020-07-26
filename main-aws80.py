@@ -281,7 +281,6 @@ app = webapp2.WSGIApplication([
         ('/', MainPage),
         ('/index', MainPage),
         ('/contact', ContactPage),
-        ('/mail.php', MailPHPPage),
         (r'/posts/(.+)', PermalinkHandler),
         (r'/edit/(.+)', EditPostHandler),
         ('/new', NewPostHandler),
