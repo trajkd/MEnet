@@ -258,6 +258,7 @@ class MailPHPPage(webapp2.RequestHandler):
             self.response.headers['Access-Control-Allow-Origin'] = '*'
             self.response.headers['Access-Control-Allow-Headers'] = '*'
             self.response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+            return webapp2.Response()
 
 class NewPostHandler(webapp2.RequestHandler):
         def get(self):
