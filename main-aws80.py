@@ -232,6 +232,7 @@ import subprocess
 import base64
 class MailPHPPage(webapp2.RequestHandler):
         def post(self):
+            self.response.headers['Access-Control-Allow-Origin'] = '*'
             # mydata = [('name', self.request.get('name')), ('email', self.request.get('email')), ('phone', self.request.get('phone')), ('message', self.request.get('message')), ('file[]', self.request.get('file[]'))]    #The first is the var name the second is the value
             # mydata = urllib.urlencode(mydata)
             # path = 'http://www.mindempathy.net/mail.php'    #the url you want to POST to
