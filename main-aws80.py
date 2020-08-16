@@ -254,6 +254,10 @@ class MailPHPPage(webapp2.RequestHandler):
             cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file))]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             return webapp2.Response(result.stdout.read())
+        def options(self):
+            self.response.headers['Access-Control-Allow-Origin'] = '*'
+            self.response.headers['Access-Control-Allow-Headers'] = '*'
+            self.response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
 
 class NewPostHandler(webapp2.RequestHandler):
         def get(self):
