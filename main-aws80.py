@@ -254,6 +254,7 @@ class MailPHPPage(webapp2.RequestHandler):
             file = self.request.get('file[]')
             cmd = ['php mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file))]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+            print result.stdout.read()
             self.response.out.write(result.stdout.read())
         def options(self):
             self.response.headers['Access-Control-Allow-Origin'] = '*'
