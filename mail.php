@@ -34,15 +34,21 @@ function responseHandler($status, $msg) {
 	exit;
 }
 
-$files = [];
-if (!empty($argv[5]['file'])) {
-	$files = restructureArray($argv[5]['file']);
-}
+// $name = $argv[1];
+// $email = $argv[2];
+// $phone = $argv[3];
+// $message = $argv[4];
+// $files = [];
+// if (!empty($argv[5]['file'])) {
+// 	$files = restructureArray($argv[5]['file']);
+// }
 
-$name = $argv[1];
-$email = $argv[2];
-$phone = $argv[3];
-$message = $argv[4];
+$name=stripslashes($_POST["name"]);
+$email=stripslashes($_POST["email"]);
+$phone=stripslashes($_POST["phone"]);
+$message=stripslashes($_POST["message"]);
+$secret="SECRET";
+$response=$_POST["captcha"];
 
 $html = '
 <!DOCTYPE html>
@@ -144,37 +150,44 @@ $html .='
 
 $mail = new PHPMailer(true);
 
-try {
-	//Server settings
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.zoho.eu';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'moreondt@gmail.com';                     // SMTP username
-    $mail->Password   = 'Dragana*7';                               // SMTP password
-    $mail->SMTPSecure = 'tls'; 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+$verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+$captcha_success=json_decode($verify);
+if ($captcha_success->success==false) {
+	responseHandler(false, 'Message could not be sent. Captcha Error: verification not successful.');
+}
+else if ($captcha_success->success==true) {
+	try {
+		//Server settings
+	    $mail->isSMTP();                                            // Send using SMTP
+	    $mail->Host       = 'smtp.zoho.eu';                    // Set the SMTP server to send through
+	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+	    $mail->Username   = 'moreondt@gmail.com';                     // SMTP username
+	    $mail->Password   = 'Dragana*7';                               // SMTP password
+	    $mail->SMTPSecure = 'tls'; 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+	    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-    //Recipients
-    $mail->setFrom('hello@mindempathy.net', $name);
-    $mail->addAddress('hello@mindempathy.net', 'ME net');     // Add a recipient
-    $mail->addReplyTo($email);
+	    //Recipients
+	    $mail->setFrom('hello@mindempathy.net', $name);
+	    $mail->addAddress('hello@mindempathy.net', 'ME net');     // Add a recipient
+	    $mail->addReplyTo($email);
 
-    if (!empty($files)) {
-    	foreach ($files as $key => $file) {
-	    	$mail->addAttachment(
-	    		$file['tmp_name'],
-	    		$file['name']
-	    	);
-    	}
-    }
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'New message at mindempathy.net from '.$name;
-    $mail->Body    = $html;
-    $mail->AltBody = strip_tags($html);
+	    if (!empty($files)) {
+	    	foreach ($files as $key => $file) {
+		    	$mail->addAttachment(
+		    		$file['tmp_name'],
+		    		$file['name']
+		    	);
+	    	}
+	    }
+	    // Content
+	    $mail->isHTML(true);                                  // Set email format to HTML
+	    $mail->Subject = 'New message at mindempathy.net from '.$name;
+	    $mail->Body    = $html;
+	    $mail->AltBody = strip_tags($html);
 
-    $mail->send();
-    responseHandler(true, 'Message sent successfully!');
-} catch (Exception $e) {
-	responseHandler(false, 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo);
+	    $mail->send();
+	    responseHandler(true, 'Message sent successfully!');
+	} catch (Exception $e) {
+		responseHandler(false, 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo);
+	}
 }
