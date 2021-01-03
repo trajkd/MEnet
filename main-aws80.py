@@ -251,10 +251,11 @@ class MailPHPPage(webapp2.RequestHandler):
             email = self.request.get('email')
             phone = self.request.get('phone')
             message = self.request.get('message')
-            file = self.request.get('file[]')
-            cmd = ['php72 mail.php "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file))]
+            # file = self.request.get('file[]')
+            file = self.request.get('files')
+            captcha = self.request.get('captcha')
+            cmd = ['php72 mail.php "%s" "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file), captcha)]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-            print result.stdout.read()
             self.response.out.write(result.stdout.read())
         def options(self):
             self.response.headers['Access-Control-Allow-Origin'] = '*'

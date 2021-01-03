@@ -34,21 +34,17 @@ function responseHandler($status, $msg) {
 	exit;
 }
 
-// $name = $argv[1];
-// $email = $argv[2];
-// $phone = $argv[3];
-// $message = $argv[4];
-// $files = [];
-// if (!empty($argv[5]['file'])) {
-// 	$files = restructureArray($argv[5]['file']);
-// }
+$name = $argv[1];
+$email = $argv[2];
+$phone = $argv[3];
+$message = $argv[4];
+$files = [];
+if (!empty($argv[5]['file'])) {
+	$files = restructureArray($argv[5]['file']);
+}
 
-$name=stripslashes($_POST["name"]);
-$email=stripslashes($_POST["email"]);
-$phone=stripslashes($_POST["phone"]);
-$message=stripslashes($_POST["message"]);
 $secret="SECRET";
-$response=$_POST["captcha"];
+$response=$argv[6];
 
 $html = '
 <!DOCTYPE html>
