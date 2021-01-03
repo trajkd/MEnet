@@ -253,6 +253,7 @@ class MailPHPPage(webapp2.RequestHandler):
             message = self.request.get('message')
             # file = self.request.get('file[]')
             file = self.request.get('files')
+            print file
             captcha = self.request.get('captcha')
             cmd = ['php72 mail.php "%s" "%s" "%s" "%s" "%s" "%s"'%(name, email, phone, message, base64.b64encode(file), captcha)]
             result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
